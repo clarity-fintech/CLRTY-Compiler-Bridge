@@ -21,5 +21,9 @@ async fn optional_rpc_smoke() {
     }
     let cfg = Clrty1Config::from_env();
     let probe = probe_clrty1(&cfg).await.expect("client");
-    assert!(probe.ok, "probe failed: {:?}", probe.error);
+    assert!(
+        probe.ok,
+        "probe failed: {:?} source={} tried={:?}",
+        probe.error, probe.source, probe.fallbacks_tried
+    );
 }

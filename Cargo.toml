@@ -24,3 +24,11 @@ hex = "0.4"
 [[bin]]
 name = "clrty-compiler-bridge"
 path = "src/main.rs"
+
+[[bin]]
+name = "smoke-clrty1"
+path = "src/bin/smoke_clrty1.rs"
+
+[[test]]
+name = "clrty1_live"
+path = "tests/clrty1_live.rs"

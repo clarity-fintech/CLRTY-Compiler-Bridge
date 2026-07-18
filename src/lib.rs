@@ -32,6 +32,8 @@ pub struct ProbeSummary {
     pub chain_id: String,
     pub tip_height: Option<String>,
     pub error: Option<String>,
+    pub source: String,
+    pub fallbacks_tried: Vec<String>,
 }
 
 impl From<&ProbeResult> for ProbeSummary {
@@ -42,6 +44,8 @@ impl From<&ProbeResult> for ProbeSummary {
             chain_id: p.chain_id.clone(),
             tip_height: p.tip_height.clone(),
             error: p.error.clone(),
+            source: p.source.clone(),
+            fallbacks_tried: p.fallbacks_tried.clone(),
         }
     }
 }
