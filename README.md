@@ -7,6 +7,15 @@ Rust compiler bridge for **CLRTY-1**: accepts IR payloads, probes the L1 RPC (op
 - Default build: Tokio + reqwest (rustls) + sha2 — no LLVM required
 - Optional Cargo feature `llvm` — reserved stub (no `llvm-sys` linkage yet)
 - Embedded CLRTY-1 client (`src/clrty1.rs`)
+- **Probe before emit** — `emit_stub` fails closed when `CLRTY_RPC_SMOKE=1` and CLRTY-1 is unreachable
+- **eBPF settlement-path stubs** — `security/ebpf/filters.yaml` (`deny_by_default`) plus `settlement_path.bpf.c` (CI validates YAML only; no kernel load)
+
+## Security
+
+- Ops checklist: [`security/CHECKLIST.md`](./security/CHECKLIST.md)
+- eBPF allowlist: [`security/ebpf/`](./security/ebpf/)
+- Pool-loop notes (TS services own the loops): [`docs/POOL_LOOPS.md`](./docs/POOL_LOOPS.md)
+- Skill manifest: [`manifests/skill.json`](./manifests/skill.json) (`CLRTY-CB-001`, substrate `CLRTY-1`)
 
 ## Usage
 

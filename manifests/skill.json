@@ -1,0 +1,19 @@
+{
+  "skill_id": "CLRTY-CB-001",
+  "name": "CLRTY Compiler Bridge",
+  "components": [
+    "https://www.clarity-fintech.com/"
+  ],
+  "operational_logic": {
+    "intent": "IR emit gated on CLRTY-1 reachability",
+    "execution_path": "IR ingest -> probeClrty1 -> checksum emit stub",
+    "substrate": "CLRTY-1"
+  },
+  "security_hardening": "eBPF-monitored socket allowlist for CLRTY-1 RPC before emit",
+  "clrty1": {
+    "chain_id": "clrty-1",
+    "numeric_chain_id": 1202,
+    "denom": "uclrty",
+    "rpc_env": "CLRTY_L1_RPC"
+  }
+}
