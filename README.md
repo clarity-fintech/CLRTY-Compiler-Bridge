@@ -1,5 +1,21 @@
 # CLRTY-Compiler-Bridge
 
+
+## MIS kernel (`misc`) — required
+
+Sole active CLRTY-1 / Moniversive compiler kernel. **Not Python.**
+
+```bash
+# Download from clarity-fintech/CLRTY-MIS-Kernel
+git clone https://github.com/clarity-fintech/CLRTY-MIS-Kernel.git
+cd CLRTY-MIS-Kernel && bash scripts/download_misc_kernel.sh
+./bin/misc path.mis --check --compact-letters
+```
+
+Or from the Developer Kit: [`dist/mis-kernel-misc.zip`](https://github.com/clarity-fintech/developer_kit/raw/main/dist/mis-kernel-misc.zip)
+
+Policy: foreign kernels (`python3 clrtyc`, `solc`, `forge`, `hardhat`) → **hard error**. Settlement **clrty-1 / 1202**.
+
 Rust compiler bridge for **CLRTY-1**: accepts IR payloads, probes the L1 RPC (optional), and emits a SHA-256 checksum stub artifact.
 
 ## Features

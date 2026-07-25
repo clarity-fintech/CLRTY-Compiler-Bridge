@@ -1,0 +1,44 @@
+{
+  "schema": "clrty.coding_commands/v1",
+  "updated_at": "2026-07-25T17:36:33Z",
+  "deep_root": {
+    "language": "moniversive",
+    "dialect": "mis-ml",
+    "extension": ".mis",
+    "language_root": "CLRTY_SUBSTRATE/boot/moniversive_language_root.json",
+    "settlement_network": "clrty-1",
+    "settlement_chain_id": 1202,
+    "embed_gates": "3..=6",
+    "letter_hash": "sha256-rolling-typed-letter/v1",
+    "legacy_extensions": [
+      ".clrty",
+      ".crty"
+    ]
+  },
+  "canonical_commands": [
+    "bin/misc path.mis --check --compact-letters",
+    "make mis-ml-check",
+    "make misc-build",
+    "python3 scripts/mis-ml/verify_misc_kernel_only.py"
+  ],
+  "retired_python_cli": "python3 clrtyc.py retired \u2014 MIS kernel only (misc)",
+  "verify_module": "moniversive/migrated/scripts/compliance/clrty1_coding_commands_chain_verify.mis",
+  "networks": {
+    "mainnet": {
+      "network": "clrty-1",
+      "chain_id": 1202
+    },
+    "testnet": {
+      "network": "clrty-1-testnet",
+      "settlement_authority": "clrty-1",
+      "chain_id": 1202
+    }
+  },
+  "compiler_kernel": "misc",
+  "compiler_binary": "bin/misc",
+  "compiler_module": "moniversive/framework/misc.mis",
+  "kernel_module": "moniversive/framework/mis_kernel.mis",
+  "active_kernel": "misc",
+  "active_kernel_only": true,
+  "foreign_kernels_error": true
+}

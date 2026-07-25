@@ -1,0 +1,39 @@
+{
+  "schema": "clrty.mis_kernel_active_only/v1",
+  "updated_at": "2026-07-25T17:40:00Z",
+  "active_kernel": "misc",
+  "active_only": true,
+  "binary": "bin/misc",
+  "module": "moniversive/framework/misc.mis",
+  "native_kernels_module": "moniversive/framework/mis_kernel.mis",
+  "settlement_network": "clrty-1",
+  "settlement_chain_id": 1202,
+  "forbidden_kernels": [
+    "python3-clrtyc",
+    "clrtyc.py",
+    "solc",
+    "forge",
+    "foundry",
+    "hardhat",
+    "llvm",
+    "solidity"
+  ],
+  "error_codes": {
+    "foreign_kernel": 3,
+    "bad_extension": 2,
+    "parse": 1
+  },
+  "policy": "Only the MIS kernel `misc` may compile or check .mis/.clrty. Any other kernel reference is a hard error.",
+  "verify": "scripts/mis-ml/verify_misc_kernel_only.py",
+  "deep_root": {
+    "language": "moniversive",
+    "dialect": "mis-ml",
+    "extension": ".mis",
+    "language_root": "CLRTY_SUBSTRATE/boot/moniversive_language_root.json",
+    "settlement_network": "clrty-1",
+    "settlement_chain_id": 1202,
+    "embed_gates": "3..=6",
+    "letter_hash": "sha256-rolling-typed-letter/v1",
+    "legacy_extensions": [".clrty", ".crty"]
+  }
+}
