@@ -1,0 +1,59 @@
+// Moniversive deep root — letter-hash + EMBED gates 3..=6
+// Real MIS module: file-type + kernel swap → MIS (`misc`) only.
+// Compile: bin/misc path.mis --check --compact-letters
+//       or bin/misc examples/mis/kernel_swap_to_mis.mis --check --compact-letters
+
+module KernelSwapToMis {
+
+  embed gates 3..=6 {
+    context: "Swap authoring surface from foreign hosts to MIS .mis on clrty-1";
+    ai: "Rewrite outcomes around EMBED + invariants; invoke bin/misc only";
+    execution: "assert_extension_mis; assert_kernel_misc; refuse_foreign; letter_hash; settle_clrty1";
+    capital: "Settlement clrty-1 / chain 1202";
+  }
+
+  invariant letter_hash_bound: letter_hash_root != @0;
+  invariant embed_gates_present: embed_root != @0;
+  invariant deep_root_moniversive: deep_root == moniversive;
+  invariant settlement_chain: chain_id == 1202;
+  invariant extension_mis: source_extension == mis;
+  invariant kernel_is_misc: compiler_kernel == misc;
+  invariant active_kernel_only: active_kernel == misc;
+  invariant no_python_host: python3_compiler == false;
+  invariant no_foreign_kernel: foreign_kernel_active == false;
+  invariant file_type_swapped: file_type == mis;
+
+  outcome assert_extension_mis(path: Bytes) {
+    require path != @0;
+    constraint source_extension == mis;
+    constraint file_type == mis;
+  }
+
+  outcome assert_kernel_misc() {
+    constraint compiler_kernel == misc;
+    constraint active_kernel == misc;
+  }
+
+  outcome refuse_foreign(name: Bytes) {
+    require name != @0;
+    constraint foreign_refused == true;
+  }
+
+  outcome letter_hash(source: Bytes) {
+    require source != @0;
+    constraint letter_root != @0;
+  }
+
+  outcome settle_clrty1(intent: Bytes) {
+    require intent != @0;
+    constraint chain_id == 1202;
+    constraint settlement_network == clrty_1;
+  }
+
+  outcome swap_file_type(from_ext: Bytes, to_ext: Bytes) {
+    require from_ext != @0;
+    require to_ext != @0;
+    constraint file_type == mis;
+    constraint source_extension == mis;
+  }
+}

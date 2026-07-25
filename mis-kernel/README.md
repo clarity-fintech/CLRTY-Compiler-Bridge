@@ -12,10 +12,10 @@ Clone into any empty directory (not inside an existing `CLRTY-MIS-Kernel` tree):
 git clone https://github.com/clarity-fintech/CLRTY-MIS-Kernel.git
 cd CLRTY-MIS-Kernel
 bash scripts/download_misc_kernel.sh
-./bin/misc src/misc.mis --check --compact-letters
+./bin/misc path.mis --check --compact-letters
 ```
 
-`path.mis` in older docs was a placeholder — use `src/misc.mis` (shipped) or your own `.mis` file.
+`path.mis` is a **real** MIS module (`KernelSwapToMis`) — file-type + kernel swap to `misc`. Also at `src/kernel_swap_to_mis.mis`.
 
 Prebuilt (this package): `bin/misc-darwin-arm64` — checksums in `bin/SHA256SUMS.txt`.
 

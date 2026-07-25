@@ -82,8 +82,10 @@ else
 fi
 
 echo "[misc] installed → $BIN_DIR/misc (active_kernel_only=true)"
-echo "[misc] smoke: $BIN_DIR/misc src/misc.mis --check --compact-letters"
+echo "[misc] smoke: $BIN_DIR/misc path.mis --check --compact-letters"
 "$BIN_DIR/misc" --help | head -5 || true
-if [[ -f "$ROOT/src/misc.mis" ]]; then
+if [[ -f "$ROOT/path.mis" ]]; then
+  "$BIN_DIR/misc" "$ROOT/path.mis" --check --compact-letters
+elif [[ -f "$ROOT/src/misc.mis" ]]; then
   "$BIN_DIR/misc" "$ROOT/src/misc.mis" --check --compact-letters
 fi

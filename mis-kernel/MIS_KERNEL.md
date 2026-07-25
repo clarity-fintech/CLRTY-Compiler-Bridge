@@ -7,7 +7,7 @@ Sole active CLRTY-1 / Moniversive compiler kernel. **Not Python.**
 ```bash
 git clone https://github.com/clarity-fintech/CLRTY-MIS-Kernel.git
 cd CLRTY-MIS-Kernel && bash scripts/download_misc_kernel.sh
-./bin/misc src/misc.mis --check --compact-letters
+./bin/misc path.mis --check --compact-letters
 ```
 
 Or from the Developer Kit: [`dist/mis-kernel-misc.zip`](https://github.com/clarity-fintech/developer_kit/raw/main/dist/mis-kernel-misc.zip)
