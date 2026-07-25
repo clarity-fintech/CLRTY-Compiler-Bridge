@@ -1,6 +1,6 @@
 {
   "schema": "clrty.mis_kernel_active_only/v1",
-  "updated_at": "2026-07-25T17:40:00Z",
+  "updated_at": "2026-07-25T18:12:39Z",
   "active_kernel": "misc",
   "active_only": true,
   "binary": "bin/misc",
@@ -34,6 +34,11 @@
     "settlement_chain_id": 1202,
     "embed_gates": "3..=6",
     "letter_hash": "sha256-rolling-typed-letter/v1",
-    "legacy_extensions": [".clrty", ".crty"]
-  }
+    "legacy_extensions": [
+      ".clrty",
+      ".crty"
+    ]
+  },
+  "demo_module": "path.mis",
+  "demo_module_alt": "examples/mis/kernel_swap_to_mis.mis"
 }
