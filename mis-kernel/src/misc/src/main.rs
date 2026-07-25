@@ -137,7 +137,7 @@ fn reject_foreign(hits: &[ForeignKernelHit]) -> ExitCode {
     for h in hits {
         eprintln!("  - kernel={} evidence={:?}", h.kernel, h.evidence);
     }
-    eprintln!("  fix: use `bin/misc path.mis --check --compact-letters`");
+    eprintln!("  fix: use `bin/misc <file.mis> --check --compact-letters`");
     ExitCode::from(3)
 }
 
