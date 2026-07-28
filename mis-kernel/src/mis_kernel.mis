@@ -1,17 +1,11 @@
-// Moniversive deep root — letter-hash + EMBED gates 3..=6
+// Moniversive deep root — letter-hash
 // mis_kernel — MIS native kernel pack entry (band 776..=875); not Python
 
 module MisKernel {
 
-  embed gates 3..=6 {
-    context: "MIS native kernels crypto→sys via misc kernel on clrty-1";
-    ai: "Resolve kernels through mis_code_index + clrty_getMisNativeKernels";
-    execution: "kernel_dispatch; assert_pack_crypto; assert_pack_math; assert_pack_sys";
-    capital: "Settlement clrty-1 / chain 1202";
-  }
+  
 
   invariant letter_hash_bound: letter_hash_root != @0;
-  invariant embed_gates_present: embed_root != @0;
   invariant deep_root_moniversive: deep_root == moniversive;
   invariant settlement_chain: chain_id == 1202;
   invariant catalog_band: invariant_band_start == 776;

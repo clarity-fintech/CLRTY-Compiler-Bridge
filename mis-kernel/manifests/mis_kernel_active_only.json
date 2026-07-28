@@ -1,6 +1,6 @@
 {
   "schema": "clrty.mis_kernel_active_only/v1",
-  "updated_at": "2026-07-25T18:12:39Z",
+  "updated_at": "2026-07-28T20:41:32Z",
   "active_kernel": "misc",
   "active_only": true,
   "binary": "bin/misc",
@@ -32,13 +32,27 @@
     "language_root": "CLRTY_SUBSTRATE/boot/moniversive_language_root.json",
     "settlement_network": "clrty-1",
     "settlement_chain_id": 1202,
-    "embed_gates": "3..=6",
     "letter_hash": "sha256-rolling-typed-letter/v1",
     "legacy_extensions": [
       ".clrty",
-      ".crty"
+      ".crty",
+      ".beacon"
+    ],
+    "superstructure_dotfiles": [
+      ".mis",
+      ".clrty",
+      ".beacon"
     ]
   },
   "demo_module": "path.mis",
-  "demo_module_alt": "examples/mis/kernel_swap_to_mis.mis"
+  "demo_module_alt": "examples/mis/kernel_swap_to_mis.mis",
+  "gitbook": "docs/gitbook/moniversive/examples/kernel-swap-to-mis.md",
+  "code_index_ids": [
+    "idx-mis-kernel-active-only",
+    "idx-mis-kernel-swap-path",
+    "idx-mis-kernel-swap-example",
+    "idx-mis-misc-kernel"
+  ],
+  "status": "active",
+  "active": true
 }

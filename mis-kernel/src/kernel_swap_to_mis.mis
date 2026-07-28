@@ -1,19 +1,13 @@
-// Moniversive deep root — letter-hash + EMBED gates 3..=6
+// Moniversive deep root — letter-hash
 // Real MIS module: file-type + kernel swap → MIS (`misc`) only.
 // Compile: bin/misc path.mis --check --compact-letters
 //       or bin/misc examples/mis/kernel_swap_to_mis.mis --check --compact-letters
 
 module KernelSwapToMis {
 
-  embed gates 3..=6 {
-    context: "Swap authoring surface from foreign hosts to MIS .mis on clrty-1";
-    ai: "Rewrite outcomes around EMBED + invariants; invoke bin/misc only";
-    execution: "assert_extension_mis; assert_kernel_misc; refuse_foreign; letter_hash; settle_clrty1";
-    capital: "Settlement clrty-1 / chain 1202";
-  }
+  
 
   invariant letter_hash_bound: letter_hash_root != @0;
-  invariant embed_gates_present: embed_root != @0;
   invariant deep_root_moniversive: deep_root == moniversive;
   invariant settlement_chain: chain_id == 1202;
   invariant extension_mis: source_extension == mis;

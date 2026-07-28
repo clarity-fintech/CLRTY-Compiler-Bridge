@@ -8,7 +8,6 @@
     "language_root": "CLRTY_SUBSTRATE/boot/moniversive_language_root.json",
     "settlement_network": "clrty-1",
     "settlement_chain_id": 1202,
-    "embed_gates": "3..=6",
     "letter_hash": "sha256-rolling-typed-letter/v1",
     "legacy_extensions": [
       ".clrty",

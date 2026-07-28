@@ -1,5 +1,5 @@
 //! misc — MIS kernel compiler (canonical). Not Python.
-//! Compiles `.mis` (`.clrty` / `.crty` legacy) → execution graph + letter-hash + EMBED 3..=6.
+//! Compiles `.mis` (`.clrty` / `.crty` legacy) → execution graph + letter-hash.
 //! Settlement: clrty-1 / chain 1202. Kernel surface: MisNativeKernels / mis_kernel.
 
 use clap::Parser;
@@ -29,7 +29,7 @@ struct Args {
     check: bool,
     #[arg(long)]
     compact_letters: bool,
-    #[arg(long, default_value_t = true)]
+    #[arg(long, default_value_t = false)]
     require_embed: bool,
     #[arg(long)]
     allow_missing_embed: bool,
@@ -128,6 +128,21 @@ fn detect_foreign_kernels(text: &str) -> Vec<ForeignKernelHit> {
         }
     }
     hits
+}
+
+/// Root superstructure dotfiles (`.mis`, `.clrty`, `.beacon`) have no Path::extension().
+fn superstructure_suffix(path: &std::path::Path) -> &str {
+    if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+        match name {
+            ".mis" => return "mis",
+            ".clrty" => return "clrty",
+            ".beacon" => return "beacon",
+            _ => {}
+        }
+    }
+    path.extension()
+        .and_then(|e| e.to_str())
+        .unwrap_or("")
 }
 
 fn reject_foreign(hits: &[ForeignKernelHit]) -> ExitCode {
@@ -325,7 +340,8 @@ fn compile_source(text: &str, path: &str, include_letter_detail: bool) -> Value 
         "foreign_kernels_rejected": true,
         "deep_root": "moniversive",
         "extension": ".mis",
-        "legacy_extensions": [".clrty", ".crty"],
+        "legacy_extensions": [".clrty", ".crty", ".beacon"],
+        "superstructure_dotfiles": [".mis", ".clrty", ".beacon"],
         "settlement_chain_id": SETTLEMENT_CHAIN_ID,
         "settlement_network": SETTLEMENT_NETWORK,
         "invariants": invariants,
@@ -355,14 +371,10 @@ fn main() -> ExitCode {
     }
 
     let args = Args::parse();
-    let suffix = args
-        .input
-        .extension()
-        .and_then(|e| e.to_str())
-        .unwrap_or("");
-    if !matches!(suffix, "mis" | "clrty" | "crty") {
+    let suffix = superstructure_suffix(&args.input);
+    if !matches!(suffix, "mis" | "clrty" | "crty" | "beacon") {
         eprintln!(
-            "error: expected .mis (canonical) or .clrty legacy alias (got .{suffix})"
+            "error: expected .mis (canonical), .clrty legacy, or superstructure .beacon (got .{suffix})"
         );
         eprintln!("  foreign formats are not an active MIS kernel — use .mis with bin/misc");
         return ExitCode::from(2);
